@@ -13,10 +13,74 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Pliki nagłówkowe\States">
+      <UniqueIdentifier>{97396025-3fd9-404e-b3ec-3d99de24c681}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki źródłowe\States">
+      <UniqueIdentifier>{d7023f5f-5edb-431f-bbd3-128f3954f09b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
+    <ClCompile Include="App.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateMachine.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="States\MenuState.cpp">
+      <Filter>Pliki źródłowe\States</Filter>
+    </ClCompile>
+    <ClCompile Include="States\NoOnlineState.cpp">
+      <Filter>Pliki źródłowe\States</Filter>
+    </ClCompile>
+    <ClCompile Include="States\OnlineMenuState.cpp">
+      <Filter>Pliki źródłowe\States</Filter>
+    </ClCompile>
+    <ClCompile Include="States\OnlineState.cpp">
+      <Filter>Pliki źródłowe\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="App.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStateMachine.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="States\MenuState.h">
+      <Filter>Pliki nagłówkowe\States</Filter>
+    </ClInclude>
+    <ClInclude Include="States\NoOnlineState.h">
+      <Filter>Pliki nagłówkowe\States</Filter>
+    </ClInclude>
+    <ClInclude Include="States\OnlineMenuState.h">
+      <Filter>Pliki nagłówkowe\States</Filter>
+    </ClInclude>
+    <ClInclude Include="States\OnlineState.h">
+      <Filter>Pliki nagłówkowe\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="sfml-window-2.dll" />
+    <CopyFileToFolders Include="sfml-system-2.dll" />
+    <CopyFileToFolders Include="sfml-network-2.dll" />
+    <CopyFileToFolders Include="sfml-graphics-2.dll" />
+    <CopyFileToFolders Include="sfml-audio-2.dll" />
+    <CopyFileToFolders Include="res\TBPROAR.TTF" />
   </ItemGroup>
 </Project>
