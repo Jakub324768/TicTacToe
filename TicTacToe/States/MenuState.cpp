@@ -29,7 +29,7 @@ void MenuState::Update()
 				StateMachine.AddStateFirst(new NoOnlineState(StateMachine));
 				break;
 			case 1: //Online
-				std::cout << "Button 2\n";
+				StateMachine.AddStateFirst(new OnlineMenuState(StateMachine));
 				break;
 			case 2: //Exit
 				StateMachine.ClearState();

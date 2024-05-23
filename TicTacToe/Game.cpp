@@ -119,12 +119,23 @@ void Game::Render()
 
 	if (winPlayer != ' ')
 	{
-		sf::Vertex vertex[2] =
+		//Linia
+		/*sf::Vertex vertex[2] =
 		{
 			sf::Vertex(sf::Vector2f((winPosition[0].y) * 200 + 100, (winPosition[0].x) * 183 + 141),sf::Color::Red),
 			sf::Vertex(sf::Vector2f((winPosition[1].y) * 200 + 100, (winPosition[1].x) * 183 + 141),sf::Color::Red)
 		};
-		window.draw(vertex, 2, sf::PrimitiveType::Lines);
+		window.draw(vertex, 2, sf::PrimitiveType::Lines);*/
+		//GrubaLinia
+		sf::Vertex vertex[4] =
+		{
+			sf::Vertex(sf::Vector2f((winPosition[0].y) * 200 + 98, (winPosition[0].x) * 183 + 139),sf::Color::Red),
+			sf::Vertex(sf::Vector2f((winPosition[0].y) * 200 + 102, (winPosition[0].x) * 183 + 143),sf::Color::Red),
+			sf::Vertex(sf::Vector2f((winPosition[1].y) * 200 + 102, (winPosition[1].x) * 183 + 143),sf::Color::Red),
+			sf::Vertex(sf::Vector2f((winPosition[1].y) * 200 + 98, (winPosition[1].x) * 183 + 139),sf::Color::Red)
+		};
+		window.draw(vertex, 4, sf::PrimitiveType::Quads);
+		
 	}
 }
 
