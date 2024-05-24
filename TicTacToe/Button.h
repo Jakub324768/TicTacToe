@@ -3,11 +3,14 @@
 
 class Button : public sf::Drawable
 {
-	sf::RectangleShape shape;
-	sf::Text buttonText;
+
 	sf::RenderWindow* _window;
 
 	bool presed = false;
+
+protected:
+    sf::Text buttonText;
+	sf::RectangleShape shape;
 
 public:
 	Button();
@@ -15,7 +18,7 @@ public:
 
 	const bool IsPresed();
 
-private:
+protected:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 };
 

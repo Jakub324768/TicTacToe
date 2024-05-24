@@ -41,8 +41,8 @@ class Game
 	void drawPoint();
 	void drawCrossAndCircle();
 
-	bool Receive();
-	bool Send();
+	void Receive();
+	void Send();
 
 	void UpdateOnline();
 	void UpdateNoOnline();

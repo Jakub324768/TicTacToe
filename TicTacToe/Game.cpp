@@ -33,6 +33,9 @@ Game::Game(bool isHost, sf::RenderWindow& Window, State* State) : bHost(isHost),
 	pointText.setPosition(10, 5);
 
 	quckButton = Button("Q", sf::Vector2f(40, 40), sf::Vector2f(555, 5), font, window);
+    
+	std::cout << "Listen" << std::endl;
+	Listen();
 }
 
 Game::Game(bool isHost, sf::RenderWindow& Window, sf::IpAddress IpAddress, State* State) : bHost(isHost), window(Window), ipAddress(IpAddress), state(State)
@@ -50,6 +53,11 @@ Game::Game(bool isHost, sf::RenderWindow& Window, sf::IpAddress IpAddress, State
 	pointText.setPosition(10, 5);
 
 	quckButton = Button("Q", sf::Vector2f(40, 40), sf::Vector2f(555, 5), font, window);
+
+	if (!Join())
+	{
+		state->SetRuning(false);
+	}
 }
 
 void Game::Update()
@@ -102,11 +110,79 @@ void Game::UpdateOnline()
 {
 	if (bHost)
 	{
+		if (quckButton.IsPresed())
+		{
+			state->SetRuning(false);
+		}
 
+		if (winPlayer == ' ')
+		{
+			if (FindWin('X'))
+			{
+				winPlayer = 'X';
+				winClock.restart();
+			}
+			else if (FindWin('O'))
+			{
+				winPlayer = 'O';
+				winClock.restart();
+			}
+		}
+		else
+		{
+			if (winClock.getElapsedTime().asSeconds() >= 5)
+			{
+				if (winPlayer == 'X')
+				{
+					point1++;
+				}
+				else
+				{
+					point2++;
+				}
+				ClearBoard();
+				winPlayer = ' ';
+			}
+		}
+		Send();
 	}
 	else
 	{
+		if (quckButton.IsPresed())
+		{
+			state->SetRuning(false);
+		}
 
+		if (winPlayer == ' ')
+		{
+			if (FindWin('X'))
+			{
+				winPlayer = 'X';
+				winClock.restart();
+			}
+			else if (FindWin('O'))
+			{
+				winPlayer = 'O';
+				winClock.restart();
+			}
+		}
+		else
+		{
+			if (winClock.getElapsedTime().asSeconds() >= 5)
+			{
+				if (winPlayer == 'X')
+				{
+					point1++;
+				}
+				else
+				{
+					point2++;
+				}
+				ClearBoard();
+				winPlayer = ' ';
+			}
+		}
+		Receive();
 	}
 }
 
@@ -137,6 +213,14 @@ void Game::Render()
 		window.draw(vertex, 4, sf::PrimitiveType::Quads);
 		
 	}
+
+	if (bHost)
+	{
+		sf::Text text(sf::IpAddress::getLocalAddress().toString(), font);
+		text.setPosition(300, 5);
+		text.setFillColor(sf::Color::Black);
+		window.draw(text);
+	}
 }
 
 void Game::Event(sf::Event& event)
@@ -151,6 +235,8 @@ void Game::Event(sf::Event& event)
 			if (board[i][j] == ' ')
 			{
 				board[i][j] = playrRound++ % 2 ? 'X' : 'O';
+				if (playrRound == 9)
+					ClearBoard;
 			}
 		}
 	}
@@ -338,7 +424,7 @@ bool Game::Join()
 	return true;
 }
 
-bool Game::Receive()
+void Game::Receive()
 {
 	sf::Packet packet;
 
@@ -347,16 +433,19 @@ bool Game::Receive()
 	for (int i = 0; i < 3; i++)
 		for (int j = 0; j < 3; j++)
 		{
-			char* tym;
-			packet >> tym; 
-			board[i][j] = *tym;
+			//char* tym;
+			//packet >> tym; 
+			//board[i][j] = *tym;
+			sf::Int8 tym;
+			packet >> tym;
+			board[i][j] = tym;
 		}
 			
 
 	packet >> point1 >> point2 >> playrRound;
 }
 
-bool Game::Send()
+void Game::Send()
 {
 	sf::Packet packet;
 

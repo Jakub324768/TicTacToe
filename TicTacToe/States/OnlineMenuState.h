@@ -1,11 +1,12 @@
 #pragma once
 #include "../GameStateMachine.h"
-#include "../Button.h"
+#include "../EnterTextBlock.h"
 
 class OnlineMenuState : public State
 {
 	Button HostButton, JoinButton, BackButton;
 	sf::Font font;
+	EnterTextBlock AdresEnterTextBlock;
 
 public:
 

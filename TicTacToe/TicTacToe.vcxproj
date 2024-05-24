@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClCompile Include="App.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="EnterTextBlock.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="main.cpp" />
@@ -164,6 +165,7 @@
   <ItemGroup>
     <ClInclude Include="App.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="EnterTextBlock.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="States\MenuState.h" />
